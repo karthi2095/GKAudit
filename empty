@@ -1,0 +1,14 @@
+<div>
+<ul class="menu">
+<li> <a class="active bor-left" href="tqm-teamwork.php">TQM & Teamwork</a></li>
+<li> <a  href="#">Quality Management</a></li>
+<li> <a  href="#">Standard Operation</a></li>
+<li> <a  href="#">Skill Management</a></li>
+<li> <a  href="#">Work Allocation</a></li>
+<li> <a  href="#">Facility Management</a></li>
+<li> <a href="#">Safety & Environment</a></li>
+<li> <a  href="#">Cost Management</a></li>
+<li> <a  href="#" class="bor-right">Report</a></li>
+<div class="clear"></div>
+</ul>
+</div>

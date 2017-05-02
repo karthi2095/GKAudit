@@ -1,0 +1,10 @@
+<IfModule mod_rewrite.c>
+
+RewriteEngine on
+RewriteCond %{Request_URI} /GKaudit/?$
+
+RewriteRule ^ http://srinode37/GKaudit/index.php [L,R=301]
+
+RedirectMatch 301 ^(.*)/$ $1
+
+</IfModule>
