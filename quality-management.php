@@ -57,33 +57,36 @@ function save()
 }
 function validatecomments() 
 {
-	  
+	  var dnp1=document.getElementById('diagnosis_result_dnp').value;
+      var dnp2=document.getElementById('kaizen_idea_dnp').value;
+      var dnr1=document.getElementById('diagnosis_result_dnr').value;
+      var dnr2=document.getElementById('kaizen_idea_dnr').value;
 	
-	if(document.getElementById('diagnosis_result_dnp').value == '')
+	if(dnp1.trim() == '')
 	{
 		
-		alert("Please fill your comments");
+		alert("Please enter the comments");
 		document.getElementById("diagnosis_result_dnp").focus();
 		return false;
 	}
-	if(document.getElementById('kaizen_idea_dnp').value == '')
+	if(dnp2.trim() == '')
 	{
 		
-		alert("Please fill your comments");
+		alert("Please enter the comments");
 		document.getElementById("kaizen_idea_dnp").focus();
 		return false;
 	}
-	if(document.getElementById('diagnosis_result_dnr').value == '')
+	if(dnr1.trim() == '')
 	{
 		
-		alert("Please fill your comments");
+		alert("Please enter the comments");
 		document.getElementById("diagnosis_result_dnr").focus();
 		return false;
 	}
-	if(document.getElementById('kaizen_idea_dnr').value == '')
+	if(dnr2.trim() == '')
 	{
 		
-		alert("Please fill your comments");
+		alert("Please enter the comments");
 		document.getElementById("kaizen_idea_dnr").focus();
 		return false;
 	}

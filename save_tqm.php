@@ -595,8 +595,8 @@ include "includes/classes/class.datamanage.php";
 															    (
 																 '9',
 																 '$svid',
-																 '".addslashes($_REQUEST['diagnosis_result_tqm'])."',
-																 '".addslashes($_REQUEST['kaizen_idea_tqm'])."',
+																 '".addslashes($_REQUEST['diagnosis_result_tm'])."',
+																 '".addslashes($_REQUEST['kaizen_idea_tm'])."',
 																 '".$month."',
 																 '".$year."',
 																 now(),

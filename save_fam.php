@@ -265,27 +265,46 @@ include "includes/classes/class.datamanage.php";
 					 		$result12=mysql_query($InsQuery);
 							 $auditId12=$_REQUEST['hifam52'];
 						} 
-				/*--------- save Itemscore-----------*/
-					
-		/*if(empty($_REQUEST['itemfam']) || $_REQUEST['itemfam'] == "")
-				{
-					$InsQuery= "insert into `tbl_itemscore` (`Category_id`,`Sv_id`,`Itemscore`,
-					 `Month`,`Year`,`Created_on`,`Audit_By`) values
-					 ('91','$svid',
-					 '".$_REQUEST['itemscorefam']."',
-					 '".$month."',
-					 '".$year."',
-					 now(),'".$sspid."')";
-					$result01=mysql_query($InsQuery);
-					 
-					 $auditId01=mysql_insert_id(); 
-			  }else{
 						
-						$InsQuery= "update `tbl_itemscore` set `Itemscore`='".$_REQUEST['itemscorefam']."',Last_Update=now() where Id='".$_REQUEST['itemfam']."'";
-					 
-							$result01=mysql_query($InsQuery);
-							$auditId01=$_REQUEST['itemfam'];
-						} */
+					/*--------------- SAVE COMMENTS for FAM--------------*/
+						
+						if(empty($_REQUEST['Commentidfam']) || $_REQUEST['Commentidfam'] == "")
+							{
+								$InsQuery= "insert into `tbl_comments` (`Category_id`,
+															`Sv_id`,
+															`Diagnosis_Result`,
+															`Kaizen_Idea`,
+															 `Month`,`Year`,
+															 `Created_on`,
+															 `Audit_By`
+															) 
+															 values
+														    (
+															 '91',
+															 '$svid',
+															 '".addslashes($_REQUEST['diagnosis_result_fam'])."',
+															 '".addslashes($_REQUEST['kaizen_idea_fam'])."',
+															 '".$month."',
+															 '".$year."',
+															 now(),
+															 '".$sspid."'
+															)
+											 ";
+								$result11=mysql_query($InsQuery);
+								$auditCMTIDwal=mysql_insert_id(); 
+				  }else{
+							
+					 $UpQuery= "update `tbl_comments` 
+										set `Diagnosis_Result`='".addslashes($_REQUEST['diagnosis_result_fam'])."',
+											`Kaizen_Idea`='".addslashes($_REQUEST['kaizen_idea_fam'])."',
+										`Last_Update`=now() 
+										where Comment_id='".$_REQUEST['Commentidfam']."'
+									 ";
+						 
+								$resultu11=mysql_query($UpQuery);
+								$auditCMTIDwal=$_REQUEST['Commentidfam'];
+							} 	
+				
 			/* --------------   Save Category Score   -------    */
 		
 			if(empty($_REQUEST['c_id']) || $_REQUEST['c_id'] == "")

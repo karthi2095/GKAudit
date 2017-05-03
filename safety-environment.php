@@ -24,8 +24,6 @@ $objlogin->check();
     
    function save_safety()
 {
-	//alert("hi");
-	
 	var str= $("form").serialize();
 	//alert(str);
 	$.ajax({
@@ -54,7 +52,80 @@ $objlogin->check();
 								}
 		});
 }
+   function validatecomments() 
+   {
+   	  var safety1 = document.getElementById('diagnosis_result_sfy').value;
+   	  var safety2 = document.getElementById('kaizen_idea_sfy').value;
+   	  var fives1 = document.getElementById('diagnosis_result_5s').value;
+   	  var fives2 = document.getElementById('kaizen_idea_5s').value;
+   	  var envy1 = document.getElementById('diagnosis_result_envy').value;
+   	  var envy2 = document.getElementById('kaizen_idea_envy').value; 	  
+   	  var ergo1 = document.getElementById('diagnosis_result_ergo').value;
+   	  var ergo2 = document.getElementById('kaizen_idea_ergo').value;
+   	if(safety1.trim() == '')
+   	{
+   		
+   		alert("Please enter the comments");
+   		document.getElementById("diagnosis_result_sfy").focus();
+   		return false;
+   	}
+   	if(safety2.trim() == '')
+   	{
+   		
+   		alert("Please enter the comments");
+   		document.getElementById("kaizen_idea_sfy").focus();
+   		return false;
+   	}
+   	
+	if(fives1.trim() == '')
+   	{
+   		
+   		alert("Please enter the comments");
+   		document.getElementById("diagnosis_result_5s").focus();
+   		return false;
+   	}
+   	if(fives2.trim() == '')
+   	{
+   		
+   		alert("Please enter the comments");
+   		document.getElementById("kaizen_idea_5s").focus();
+   		return false;
+   	}
 
+   	if(envy1.trim() == '')
+   	{
+   		
+   		alert("Please enter the comments");
+   		document.getElementById("diagnosis_result_envy").focus();
+   		return false;
+   	}
+   	if(envy2.trim() == '')
+   	{
+   		
+   		alert("Please enter the comments");
+   		document.getElementById("kaizen_idea_envy").focus();
+   		return false;
+   	}
+
+	if(ergo1.trim() == '')
+   	{
+   		
+   		alert("Please enter the comments");
+   		document.getElementById("diagnosis_result_ergo").focus();
+   		return false;
+   	}
+   	if(ergo2.trim() == '')
+   	{
+   		
+   		alert("Please enter the comments");
+   		document.getElementById("kaizen_idea_ergo").focus();
+   		return false;
+   	}
+   	document.getElementById("hdaction1").value=1;
+   	//return true;
+   	 save_safety();
+   	
+   }
 </script>
 </head>
 
@@ -532,7 +603,23 @@ $objlogin->check();
 								<td colspan="7" class="bg-gray"></td>
 
 							</tr>
-
+					<!--- for comments form auditor ---->
+						
+						<?php 	$commentsfy=$objlogin->GetComment(103); ?>
+					<input type="hidden" name="Commentidsfy" id="Commentidsfy"
+							value="<?php echo $commentsfy['Comment_id'];?>">
+						<tr >
+							
+							<td colspan="7" style="text-align: center;"><b>Diagnosis Result<br>
+												(Result comments from Auditor)<b></td>
+							<td colspan="6" style="text-align: center; color: blue;"><b >Kaizen Idea<br>
+												(Recommended actions from the Auditor)</b></td>
+						</tr>
+						<tr >
+							<td colspan="7" class="item2"><textarea rows="7" cols="50" id="diagnosis_result_sfy" name="diagnosis_result_sfy" style="width: 99%;" ><?php echo stripslashes($commentsfy['Diagnosis_Result']); ?></textarea></td>
+							<td colspan="6" class="item2"><textarea rows="7" cols="50" id="kaizen_idea_sfy" name="kaizen_idea_sfy" style="width: 99%;" ><?php echo stripslashes($commentsfy['Kaizen_Idea']); ?></textarea></td>
+						</tr>
+						<!--- for comments form auditor  ------------->
 							<!-- 5S  row -->
 
 							<!--1st row -->
@@ -778,6 +865,23 @@ $objlogin->check();
 									value="<?php if($item5s['Itemscore'] != ""){ echo $item5s['Itemscore'];} else{ echo "0";} ?>">
 								<td colspan="7" class="bg-gray"></td>
 							</tr>
+							<!--- for comments form auditor ---->
+						
+						<?php 	$comment5s=$objlogin->GetComment(112); ?>
+					<input type="hidden" name="Commentid5s" id="Commentid5s"
+							value="<?php echo $comment5s['Comment_id'];?>">
+						<tr >
+							
+							<td colspan="7" style="text-align: center;"><b>Diagnosis Result<br>
+												(Result comments from Auditor)<b></td>
+							<td colspan="6" style="text-align: center; color: blue;"><b >Kaizen Idea<br>
+												(Recommended actions from the Auditor)</b></td>
+						</tr>
+						<tr >
+							<td colspan="7" class="item2"><textarea rows="7" cols="50" id="diagnosis_result_5s" name="diagnosis_result_5s" style="width: 99%;" ><?php echo stripslashes($comment5s['Diagnosis_Result']); ?></textarea></td>
+							<td colspan="6" class="item2"><textarea rows="7" cols="50" id="kaizen_idea_5s" name="kaizen_idea_5s" style="width: 99%;" ><?php echo stripslashes($comment5s['Kaizen_Idea']); ?></textarea></td>
+						</tr>
+						<!--- for comments form auditor  ------------->
 							<!-- Environment  row -->
 
 							<!--1st row -->
@@ -1021,7 +1125,23 @@ $objlogin->check();
 									value="<?php if($itemenv['Itemscore'] != ""){ echo $itemenv['Itemscore']; }else{ echo "0";} ?>">
 								<td colspan="7" class="bg-gray"></td>
 							</tr>
-
+						<!--- for comments form auditor ---->
+						
+						<?php 	$commentenvy=$objlogin->GetComment(117); ?>
+					<input type="hidden" name="Commentidenvy" id="Commentidenvy"
+							value="<?php echo $commentenvy['Comment_id'];?>">
+						<tr >
+							
+							<td colspan="7" style="text-align: center;"><b>Diagnosis Result<br>
+												(Result comments from Auditor)<b></td>
+							<td colspan="6" style="text-align: center; color: blue;"><b >Kaizen Idea<br>
+												(Recommended actions from the Auditor)</b></td>
+						</tr>
+						<tr >
+							<td colspan="7" class="item2"><textarea rows="7" cols="50" id="diagnosis_result_envy" name="diagnosis_result_envy" style="width: 99%;" ><?php echo stripslashes($commentenvy['Diagnosis_Result']); ?></textarea></td>
+							<td colspan="6" class="item2"><textarea rows="7" cols="50" id="kaizen_idea_envy" name="kaizen_idea_envy" style="width: 99%;" ><?php echo stripslashes($commentenvy['Kaizen_Idea']); ?></textarea></td>
+						</tr>
+						<!--- for comments form auditor  ------------->
 							<!-- Ergoimics  row -->
 
 							<!--1st row -->
@@ -1276,7 +1396,23 @@ $objlogin->check();
 									value="<?php if($itemergo['Itemscore'] != ""){ echo $itemergo['Itemscore']; }else{ echo "0";} ?>">
 								<td colspan="7" class="bg-gray"></td>
 							</tr>
-
+						<!--- for comments form auditor ---->
+						
+						<?php 	$commentergo=$objlogin->GetComment(122); ?>
+					<input type="hidden" name="Commentidergo" id="Commentidergo"
+							value="<?php echo $commentergo['Comment_id'];?>">
+						<tr >
+							
+							<td colspan="7" style="text-align: center;"><b>Diagnosis Result<br>
+												(Result comments from Auditor)<b></td>
+							<td colspan="6" style="text-align: center; color: blue;"><b >Kaizen Idea<br>
+												(Recommended actions from the Auditor)</b></td>
+						</tr>
+						<tr >
+							<td colspan="7" class="item2"><textarea rows="7" cols="50" id="diagnosis_result_ergo" name="diagnosis_result_ergo" style="width: 99%;" ><?php echo stripslashes($commentergo['Diagnosis_Result']); ?></textarea></td>
+							<td colspan="6" class="item2"><textarea rows="7" cols="50" id="kaizen_idea_ergo" name="kaizen_idea_ergo" style="width: 99%;" ><?php echo stripslashes($commentergo['Kaizen_Idea']); ?></textarea></td>
+						</tr>
+						<!--- for comments form auditor  ------------->
 							<tr class="item1">
 								<td colspan="6"><b>Category Score<b>
 								
@@ -1368,7 +1504,7 @@ $objlogin->check();
 
 			</div>
 			<div style="float: right">
-				<button type="button" class="next" onclick="save_safety();">Submit</button>
+				<button type="button" class="next" onclick="validatecomments();">Submit</button>
 			</div>
 				<!-- onclick="save_com(); getActualScore(); " -->
 	

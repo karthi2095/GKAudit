@@ -230,54 +230,96 @@ window.onload=function()
 <td colspan="2" class="head">Category</td>
 <td style="width: 38%;border-left: 0;border-right: 0;" class="head">Diagnosis Result<br>
 (Result comments from Auditor)</td>
-<td style="width: 38%; float:right" class="head">Kaizen Idea<br>
+<td style="width: 38%; float:right;" class="head">Kaizen Idea<br>
 (Recommended actions from the Auditor)</td>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td rowspan="2" style="width:6.2%;/*! float: left; */">TQM &amp; Teamwork</td>
+<?php 	$commenttqm=$objlogin->GetComment(1); ?>
 <td style="width:11%;">TQM</td>
 <td style="width:30%;">
-Kaizen Idea (Recommended actions from the Auditor) Kaizen Idea (Recommended actions from the Auditor) Kaizen Idea (Recommended actions from the Auditor) Kaizen Idea (Recommended actions from the Auditor) Kaizen Idea (Recommended actions from the Auditor) Kaizen Idea (Recommended actions from the Auditor) Kaizen Idea (Recommended actions from the Auditor) Kaizen Idea (Recommended actions from the Auditor)Kaizen Idea (Recommended actions from the Auditor) Kaizen Idea (Recommended actions from the Auditor) Kaizen Idea (Recommended actions from the Auditor)Kaizen Idea (Recommended actions from the Auditor) </td>
-<td style="width:29%;">Kaizen Idea (Recommended actions from the Auditor)</td>
+<?php echo stripslashes($commenttqm['Diagnosis_Result']); ?></td>
+<td style="width:29%;"><?php echo stripslashes($commenttqm['Kaizen_Idea']); ?></td>
 </tr>
-
+<?php 	$commenttm=$objlogin->GetComment(9); ?>
 <tr>
 <td style="">Team Management</td>
-<td style="">
-Kaizen Idea (Recommended actions from the Auditor) Kaizen Idea (Recommended actions from the Auditor) Kaizen Idea (Recommended actions from the Auditor) Kaizen Idea (Recommended actions from the Auditor) Kaizen Idea (Recommended actions from the Auditor) Kaizen Idea (Recommended actions from the Auditor) Kaizen Idea (Recommended actions from the Auditor) Kaizen Idea (Recommended actions from the Auditor)Kaizen Idea (Recommended actions from the Auditor) Kaizen Idea (Recommended actions from the Auditor) Kaizen Idea (Recommended actions from the Auditor)Kaizen Idea (Recommended actions from the Auditor) </td>
-<td style="">Kaizen Idea (Recommended actions from the Auditor)</td>
+<td style=""><?php echo $commenttm['Diagnosis_Result']; ?></td>
+<td style=""><?php echo $commenttm['Kaizen_Idea']; ?></td>
 </tr>
-
+<?php 	$commentdnp=$objlogin->GetComment(17); ?>
 <tr>
 <td rowspan="2" style="width:6.2%;/*! float: left; */">Quality Management</td>
 <td style="width:11%;">Quality Assurance </td>
-<td style="width:30%;">
-Kaizen Idea (Recommended actions from the Auditor) Kaizen Idea (Recommended actions from the Auditor) Kaizen Idea (Recommended actions from the Auditor) Kaizen Idea (Recommended actions from the Auditor) Kaizen Idea (Recommended actions from the Auditor) Kaizen Idea (Recommended actions from the Auditor) Kaizen Idea (Recommended actions from the Auditor) Kaizen Idea (Recommended actions from the Auditor)Kaizen Idea (Recommended actions from the Auditor) Kaizen Idea (Recommended actions from the Auditor) Kaizen Idea (Recommended actions from the Auditor)Kaizen Idea (Recommended actions from the Auditor) </td>
-<td style="width:29%;">Kaizen Idea (Recommended actions from the Auditor)</td>
+<td style="width:30%;"><?php echo stripslashes($commentdnp['Diagnosis_Result']); ?></td>
+<td style="width:29%;"><?php echo stripslashes($commentdnp['Kaizen_Idea']); ?></td>
 </tr>
-
+<?php 	$commentdnr=$objlogin->GetComment(36); ?>
 <tr>
 <td style="">Quality Management</td>
-<td style="">
-Kaizen Idea (Recommended actions from the Auditor) Kaizen Idea (Recommended actions from the Auditor) Kaizen Idea (Recommended actions from the Auditor) Kaizen Idea (Recommended actions from the Auditor) Kaizen Idea (Recommended actions from the Auditor) Kaizen Idea (Recommended actions from the Auditor) Kaizen Idea (Recommended actions from the Auditor) Kaizen Idea (Recommended actions from the Auditor)Kaizen Idea (Recommended actions from the Auditor) Kaizen Idea (Recommended actions from the Auditor) Kaizen Idea (Recommended actions from the Auditor)Kaizen Idea (Recommended actions from the Auditor) </td>
-<td style="">Kaizen Idea (Recommended actions from the Auditor)</td>
+<td style=""><?php echo stripslashes($commentdnr['Diagnosis_Result']); ?></td>
+<td style=""><?php echo stripslashes($commentdnr['Kaizen_Idea']); ?></td>
 </tr>
-
+<?php 	$commentsop=$objlogin->GetComment(49); ?>
 <tr>
 <td colspan="2" style="width:17.2%;/*! float: left; */">Standard Operation</td>
 <!-- <td style="width:11%;">Quality Assurance </td> -->
-<td style="width:30%;">
-Kaizen Idea (Recommended actions from the Auditor) Kaizen Idea (Recommended actions from the Auditor) Kaizen Idea (Recommended actions from the Auditor) Kaizen Idea (Recommended actions from the Auditor) Kaizen Idea (Recommended actions from the Auditor) Kaizen Idea (Recommended actions from the Auditor) Kaizen Idea (Recommended actions from the Auditor) Kaizen Idea (Recommended actions from the Auditor)Kaizen Idea (Recommended actions from the Auditor) Kaizen Idea (Recommended actions from the Auditor) Kaizen Idea (Recommended actions from the Auditor)Kaizen Idea (Recommended actions from the Auditor) </td>
-<td style="width:29%;">Kaizen Idea (Recommended actions from the Auditor)</td>
+<td style="width:30%;"><?php echo stripslashes($commentsop['Diagnosis_Result']); ?></td>
+<td style="width:29%;"><?php echo stripslashes($commentsop['Kaizen_Idea']); ?></td>
 </tr>
-
+<?php 	$commentskm=$objlogin->GetComment(63); ?>
 <td colspan="2" style="width:17.2%;/*! float: left; */">Skill Management</td>
 <!-- <td style="width:11%;">Quality Assurance </td> -->
-<td style="width:30%;">
-Kaizen Idea (Recommended actions from the Auditor) Kaizen Idea (Recommended actions from the Auditor) Kaizen Idea (Recommended actions from the Auditor) Kaizen Idea (Recommended actions from the Auditor) Kaizen Idea (Recommended actions from the Auditor) Kaizen Idea (Recommended actions from the Auditor) Kaizen Idea (Recommended actions from the Auditor) Kaizen Idea (Recommended actions from the Auditor)Kaizen Idea (Recommended actions from the Auditor) Kaizen Idea (Recommended actions from the Auditor) Kaizen Idea (Recommended actions from the Auditor)Kaizen Idea (Recommended actions from the Auditor) </td>
-<td style="width:29%;">Kaizen Idea (Recommended actions from the Auditor)</td>
+<td style="width:30%;"><?php echo stripslashes($commentskm['Diagnosis_Result']); ?></td>
+<td style="width:29%;"><?php echo stripslashes($commentskm['Kaizen_Idea']); ?></td>
+</tr>
+
+<?php 	$commentwal=$objlogin->GetComment(79); ?>
+<td colspan="2" style="width:17.2%;/*! float: left; */">Work Allocation</td>
+<!-- <td style="width:11%;">Quality Assurance </td> -->
+<td style="width:30%;"><?php echo stripslashes($commentwal['Diagnosis_Result']); ?></td>
+<td style="width:29%;"><?php echo stripslashes($commentwal['Kaizen_Idea']); ?></td>
+</tr>
+
+<?php 	$commentfam=$objlogin->GetComment(91); ?>
+<td colspan="2" style="width:17.2%;/*! float: left; */">Facility Management</td>
+<!-- <td style="width:11%;">Quality Assurance </td> -->
+<td style="width:30%;"><?php echo stripslashes($commentfam['Diagnosis_Result']); ?></td>
+<td style="width:29%;"><?php echo stripslashes($commentfam['Kaizen_Idea']); ?></td>
+</tr>
+<?php 	$commentsfy=$objlogin->GetComment(103); ?>
+<tr>
+<td rowspan="4" style="width:6.2%;/*! float: left; */">Safety & Environment</td>
+<td style="width:11%;">Safety </td>
+<td style="width:30%;"><?php echo stripslashes($commentsfy['Diagnosis_Result']); ?></td>
+<td style="width:29%;"><?php echo stripslashes($commentsfy['Kaizen_Idea']); ?></td>
+</tr>
+<?php 	$comment5s=$objlogin->GetComment(112); ?>
+<tr>
+<td style="">5S</td>
+<td style=""><?php echo stripslashes($comment5s['Diagnosis_Result']); ?></td>
+<td style=""><?php echo stripslashes($comment5s['Kaizen_Idea']); ?></td>
+</tr>
+<?php 	$commentenvy=$objlogin->GetComment(117); ?>
+<tr>
+<td style="">Environment</td>
+<td style=""><?php echo stripslashes($commentenvy['Diagnosis_Result']); ?></td>
+<td style=""><?php echo stripslashes($commentenvy['Kaizen_Idea']); ?></td>
+</tr>
+<?php 	$commentergo=$objlogin->GetComment(122); ?>
+<tr>
+<td style="">Ergonomics</td>
+<td style=""><?php echo stripslashes($commentergo['Diagnosis_Result']); ?></td>
+<td style=""><?php echo stripslashes($commentergo['Kaizen_Idea']); ?></td>
+</tr>
+<?php 	$commentcom=$objlogin->GetComment(127); ?>
+<tr>
+<td colspan="2" style="width:17.2%;/*! float: left; */">Cost Management</td>
+<!-- <td style="width:11%;">Quality Assurance </td> -->
+<td style="width:30%;"><?php echo stripslashes($commentcom['Diagnosis_Result']); ?></td>
+<td style="width:29%;"><?php echo stripslashes($commentcom['Kaizen_Idea']); ?></td>
 </tr>
 
 

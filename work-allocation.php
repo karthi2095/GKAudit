@@ -56,7 +56,31 @@ $objlogin->check();
 	return false;
 	
 }
- 
+ function validatecomments() 
+ {
+ 	  var wal1 = document.getElementById('diagnosis_result_wal').value;
+ 	  var wal2 = document.getElementById('kaizen_idea_wal').value;
+ 	
+ 	if(wal1.trim() == '')
+ 	{
+ 		
+ 		alert("Please enter the comments");
+ 		document.getElementById("diagnosis_result_wal").focus();
+ 		return false;
+ 	}
+ 	if(wal2.trim() == '')
+ 	{
+ 		
+ 		alert("Please enter the comments");
+ 		document.getElementById("kaizen_idea_wal").focus();
+ 		return false;
+ 	}
+ 	
+ 	document.getElementById("hdaction").value=1;
+ 	//return true;
+ 	 savewal();
+ 	
+ }
 </script>
 </head>
 
@@ -639,6 +663,23 @@ $objlogin->check();
 							</td>
 
 						</tr>
+						<!--- for comments form auditor ---->
+						<?php 	$commentwal=$objlogin->GetComment(79); ?>
+					<input type="hidden" name="Commentidwal" id="Commentidwal"
+							value="<?php echo $commentwal['Comment_id'];?>">
+						<tr >
+							
+							<td colspan="7" style="text-align: center;"><b>Diagnosis Result<br>
+												(Result comments from Auditor)<b></td>
+							<td colspan="6" style="text-align: center; color: blue;"><b >Kaizen Idea<br>
+												(Recommended actions from the Auditor)</b></td>
+						</tr>
+						<tr >
+							<td colspan="7" class="item2"><textarea rows="7" cols="50" id="diagnosis_result_wal" name="diagnosis_result_wal" style="width: 99%;" ><?php echo stripslashes($commentwal['Diagnosis_Result']); ?></textarea></td>
+							<td colspan="6" class="item2"><textarea rows="7" cols="50" id="kaizen_idea_wal" name="kaizen_idea_wal" style="width: 99%;" ><?php echo stripslashes($commentwal['Kaizen_Idea']); ?></textarea></td>
+						</tr>
+						<!--- for comments form auditor  ------------->
+						
 						<tr class="item1">
 							<td colspan="6"><b>Category Score<b>
 							
@@ -723,7 +764,7 @@ $objlogin->check();
 					</tbody>
 				</table>
 				<div style="float: right">
-					<button type="button" class="next" onclick="savewal();">Submit</button>
+					<button type="button" class="next" onclick="validatecomments();">Submit</button>
 				</div>
 			</form>
 

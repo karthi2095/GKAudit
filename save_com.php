@@ -290,8 +290,46 @@ include "includes/classes/class.datamanage.php";
 						$auditId13=$_REQUEST['hicom53'];
 				} 	
 				
+				/*--------------- SAVE COMMENTS for FAM--------------*/
+						
+						if(empty($_REQUEST['Commentidcom']) || $_REQUEST['Commentidcom'] == "")
+							{
+								$InsQuery= "insert into `tbl_comments` (`Category_id`,
+															`Sv_id`,
+															`Diagnosis_Result`,
+															`Kaizen_Idea`,
+															 `Month`,`Year`,
+															 `Created_on`,
+															 `Audit_By`
+															) 
+															 values
+														    (
+															 '127',
+															 '$svid',
+															 '".addslashes($_REQUEST['diagnosis_result_com'])."',
+															 '".addslashes($_REQUEST['kaizen_idea_com'])."',
+															 '".$month."',
+															 '".$year."',
+															 now(),
+															 '".$sspid."'
+															)
+											 ";
+								$result11=mysql_query($InsQuery);
+								$auditCMTIDcom=mysql_insert_id(); 
+				  }else{
+							
+					 $UpQuery= "update `tbl_comments` 
+										set `Diagnosis_Result`='".addslashes($_REQUEST['diagnosis_result_com'])."',
+											`Kaizen_Idea`='".addslashes($_REQUEST['kaizen_idea_com'])."',
+										`Last_Update`=now() 
+										where Comment_id='".$_REQUEST['Commentidcom']."'
+									 ";
+						 
+								$resultu11=mysql_query($UpQuery);
+								$auditCMTIDcom=$_REQUEST['Commentidcom'];
+							} 	
 
-								/* --------------   Save Category Score   -------    */
+					/* --------------   Save Category Score   -------    */
 		
 			if(empty($_REQUEST['c_id']) || $_REQUEST['c_id'] == "")
 				{
@@ -348,7 +386,7 @@ include "includes/classes/class.datamanage.php";
 			
 		if($auditId1 != '' && $auditId2 != '' && $auditId3 != '' && $auditId4 != '' && $auditId5 != '' && $auditId6 != ''
 			&& $auditId7 != '' && $auditId8 != '' && $auditId9 != '' && $auditId10 != '' && $auditId11 != '' && $auditId12 != '' 
-			&& $auditId13 != '' && $auditIdcr != '')
+			&& $auditId13 != '' && $auditIdcr != '' && $auditCMTIDcom != '')
 			{	
 				echo '1';
 			}else 

@@ -261,28 +261,45 @@ include "includes/classes/class.datamanage.php";
 							$result16=mysql_query($InsQuery);
 							$auditId12=$_REQUEST['hiwal53'];
 								} 
-								
-						/*--------- save Itemscore-----------
-							
-					if(empty($_REQUEST['itemwal']) || $_REQUEST['itemwal'] == "")
-						{
-							$InsQuery= "insert into `tbl_itemscore` (`Category_id`,`Sv_id`,`Itemscore`,
-							 `Month`,`Year`,`Created_on`) values
-							 ('79','$svid',
-							 '".$_REQUEST['itemscorewal']."',
-							 '".$month."',
-							 '".$year."',
-							 now())";
-							$result01=mysql_query($InsQuery);
-							 
-							 $auditId01=mysql_insert_id(); 
-			  }else{
+						/*--------------- SAVE COMMENTS for SOP--------------*/
 						
-						$InsQuery= "update `tbl_itemscore` set `Itemscore`='".$_REQUEST['itemscorewal']."',Last_Update=now() where Id='".$_REQUEST['itemwal']."'";
-					 
-							$result01=mysql_query($InsQuery);
-							$auditId01=mysql_insert_id();
-						} */
+						if(empty($_REQUEST['Commentidwal']) || $_REQUEST['Commentidwal'] == "")
+							{
+								$InsQuery= "insert into `tbl_comments` (`Category_id`,
+															`Sv_id`,
+															`Diagnosis_Result`,
+															`Kaizen_Idea`,
+															 `Month`,`Year`,
+															 `Created_on`,
+															 `Audit_By`
+															) 
+															 values
+														    (
+															 '79',
+															 '$svid',
+															 '".addslashes($_REQUEST['diagnosis_result_wal'])."',
+															 '".addslashes($_REQUEST['kaizen_idea_wal'])."',
+															 '".$month."',
+															 '".$year."',
+															 now(),
+															 '".$sspid."'
+															)
+											 ";
+								$result11=mysql_query($InsQuery);
+								$auditCMTIDwal=mysql_insert_id(); 
+				  }else{
+							
+					 $UpQuery= "update `tbl_comments` 
+										set `Diagnosis_Result`='".addslashes($_REQUEST['diagnosis_result_wal'])."',
+											`Kaizen_Idea`='".addslashes($_REQUEST['kaizen_idea_wal'])."',
+										`Last_Update`=now() 
+										where Comment_id='".$_REQUEST['Commentidwal']."'
+									 ";
+						 
+								$resultu11=mysql_query($UpQuery);
+								$auditCMTIDwal=$_REQUEST['Commentidwal'];
+							} 				
+					
 								/* --------------   Save Category Score   -------    */
 		
 			if(empty($_REQUEST['c_id']) || $_REQUEST['c_id'] == "")
@@ -339,7 +356,7 @@ include "includes/classes/class.datamanage.php";
 			
 			if($auditId1 != '' && $auditId2 != '' && $auditId3 != '' && $auditId4 != '' && $auditId5 != '' && $auditId6 != ''
 				&& $auditId7 != '' && $auditId8 != '' && $auditId9 != '' && $auditId10 != '' && $auditId11 != '' && $auditId12 != '' 
-				&& $auditIdcr != '' )
+				&& $auditIdcr != '' && $auditCMTIDwal != '')
 			{
 				
 				echo '1';

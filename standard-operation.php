@@ -22,7 +22,7 @@ $objlogin->check();
 <script>
   function savesop()
   { 
-	  alert("");  	
+	  //alert("");  	
 
   var str= $("form").serialize();
   	//alert(str);
@@ -56,24 +56,25 @@ $objlogin->check();
   }
   function validatecomments() 
   {
-	  
+		var sop1 = document.getElementById('diagnosis_result_sop').value;
+	    var sop2 = document.getElementById('kaizen_idea_sop').value; 
 	
-	if(document.getElementById('diagnosis_result_sop').value == '')
+	if(sop1.trim() == '')
 	{
 		
-		alert("Please fill your comments");
+		alert("Please enter the comments");
 		document.getElementById("diagnosis_result_sop").focus();
 		return false;
 	}
-	if(document.getElementById('kaizen_idea_sop').value == '')
+	if(sop2.trim() == '')
 	{
 		
-		alert("Please fill your comments");
+		alert("Please enter the comments");
 		document.getElementById("kaizen_idea_sop").focus();
 		return false;
 	}
 	
-	document.getElementById("hdaction1").value=1;
+	document.getElementById("hdaction").value=1;
 	//return true;
 	 savesop();
 	
@@ -874,7 +875,7 @@ $objlogin->check();
 
 				</table>
 				<div style="float: right">
-					<button type="button" class="next" onclick="validatecomments(); savesop();">Submit</button>
+					<button type="button" class="next" onclick="validatecomments();">Submit</button>
 				</div>
 			</form>
 

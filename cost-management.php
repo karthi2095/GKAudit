@@ -53,13 +53,31 @@ function save_commanage()
 								}
 		});
 }
-/*window.onload=function(){
-	actualscorecom1();
-	actualscorecom2();
-	actualscorecom3();
-	actualscorecom4();
-	actualscorecom5();
-}*/
+function validatecomments() 
+{
+	  var com1 = document.getElementById('diagnosis_result_com').value;
+	  var com2 = document.getElementById('kaizen_idea_com').value;
+	
+	if(com1.trim() == '')
+	{
+		
+		alert("Please enter the comments");
+		document.getElementById("diagnosis_result_com").focus();
+		return false;
+	}
+	if(com2.trim() == '')
+	{
+		
+		alert("Please enter the comments");
+		document.getElementById("kaizen_idea_com").focus();
+		return false;
+	}
+	
+	document.getElementById("hdaction").value=1;
+	//return true;
+	 save_commanage();
+	
+}
 </script>
 
 </head>
@@ -112,22 +130,7 @@ function save_commanage()
 						$getrank = $objlogin->Getcategory(127);
 						//$itemtm=$objlogin->Getitemscore(127);
 						?>
-						<!--  <input type="hidden" name="c_id" id="c_id" value="<?php echo $getrank['ID'];?>">
-   <input type="hidden" id="Costlevel1" name="Costlevel1"  value="<?php if($itemtm['Actual_score1']!=""){ echo $itemtm['Actual_score1'];}else {echo "0";}?>">
-   <input type="hidden" id="Costlevel2" name="Costlevel2" value="0">
-    <input type="hidden" id="Costlevel3" name="Costlevel3" value="0">
-     <input type="hidden" id="Costlevel4" name="Costlevel4" value="0">
-      <input type="hidden" id="Costlevel5" name="Costlevel5" value="0">
-	  
-   <input type="hidden" name="itemscore" id="itemscore" value=""> 
-   <input type="hidden" name="cathidden" id="cathidden">
-    <input type="hidden" name="catrankhidden" id="catrankhidden" value="">
-   
-   <input type="hidden" id="Achievelevel1" name="Achievelevel1" value="">
-   <input type="hidden" id="Achievelevel2" name="Achievelevel2" value="">
-    <input type="hidden" id="Achievelevel3" name="Achievelevel3" value="">
-     <input type="hidden" id="Achievelevel4" name="Achievelevel4" value="">
-      <input type="hidden" id="Achievelevel5" name="Achievelevel5" value="">   -->
+						
 
 						<tr class="bg-gray">
 							<th style="width: 10%;" rowspan="2">Evaluation Item</th>
@@ -705,6 +708,24 @@ function save_commanage()
 
 						</tr>
 						
+						<!--- for comments form auditor ---->
+						
+						<?php 	$commentcom=$objlogin->GetComment(127); ?>
+					<input type="hidden" name="Commentidcom" id="Commentidcom"
+							value="<?php echo $commentcom['Comment_id'];?>">
+						<tr >
+							
+							<td colspan="7" style="text-align: center;"><b>Diagnosis Result<br>
+												(Result comments from Auditor)<b></td>
+							<td colspan="6" style="text-align: center; color: blue;"><b >Kaizen Idea<br>
+												(Recommended actions from the Auditor)</b></td>
+						</tr>
+						<tr >
+							<td colspan="7" class="item2"><textarea rows="7" cols="50" id="diagnosis_result_com" name="diagnosis_result_com" style="width: 99%;" ><?php echo stripslashes($commentcom['Diagnosis_Result']); ?></textarea></td>
+							<td colspan="6" class="item2"><textarea rows="7" cols="50" id="kaizen_idea_com" name="kaizen_idea_com" style="width: 99%;" ><?php echo stripslashes($commentcom['Kaizen_Idea']); ?></textarea></td>
+						</tr>
+						<!--- for comments form auditor  ------------->
+						
 						<tr class="item1">
 							<td colspan="6"><b>Category Score<b>
 							
@@ -796,7 +817,7 @@ function save_commanage()
 
 	</div>
 	<div style="float: right">
-		<button type="button" class="next" onclick="save_commanage();">Submit</button>
+		<button type="button" class="next" onclick="validatecomments();">Submit</button>
 		</form>
 
 </body>

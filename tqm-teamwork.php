@@ -53,33 +53,35 @@ $objlogin->check();
 	
   function validatecomments() 
   {
-	  
-	
-	if(document.getElementById('diagnosis_result_tqm').value == '')
+	  var tqm1 = document.getElementById('diagnosis_result_tqm').value;
+	  var tqm2 = document.getElementById('kaizen_idea_tqm').value;
+	  var team1 = document.getElementById('diagnosis_result_tm').value;
+	  var team2 = document.getElementById('kaizen_idea_tm').value ;
+	if(tqm1.trim() == '')
 	{
 		
-		alert("Please fill your comments");
+		alert("Please enter the comments");
 		document.getElementById("diagnosis_result_tqm").focus();
 		return false;
 	}
-	if(document.getElementById('kaizen_idea_tqm').value == '')
+	if(tqm2.trim() == '')
 	{
 		
-		alert("Please fill your comments");
+		alert("Please enter the comments");
 		document.getElementById("kaizen_idea_tqm").focus();
 		return false;
 	}
-	if(document.getElementById('diagnosis_result_tm').value == '')
+	if(team1.trim() == '')
 	{
 		
-		alert("Please fill your comments");
+		alert("Please enter the comments");
 		document.getElementById("diagnosis_result_tm").focus();
 		return false;
 	}
-	if(document.getElementById('kaizen_idea_tm').value == '')
+	if(team2.trim() == '')
 	{
 		
-		alert("Please fill your comments");
+		alert("Please enter the comments");
 		document.getElementById("kaizen_idea_tm").focus();
 		return false;
 	}

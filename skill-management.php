@@ -52,7 +52,32 @@ function saveskm()
 	return false;
 	
 }
-
+function validatecomments() 
+{
+	  
+	var skm1 = document.getElementById('diagnosis_result_skm').value;
+    var skm2 = document.getElementById('kaizen_idea_skm').value;
+    
+	if(skm1.trim() == '')
+	{
+		
+		alert("Please enter the comments");
+		document.getElementById("diagnosis_result_skm").focus();
+		return false;
+	}
+	if(skm2.trim() == '')
+	{
+		
+		alert("Please enter the comments");
+		document.getElementById("kaizen_idea_skm").focus();
+		return false;
+	}
+	
+	document.getElementById("hdaction").value=1;
+	//return true;
+	 saveskm();
+	
+}
 </script>
 </head>
 
@@ -751,7 +776,22 @@ function saveskm()
 							</td>
 
 						</tr>
-
+					<!--- for comments form auditor ---->
+						<?php 	$commentskm=$objlogin->GetComment(63); ?>
+					<input type="hidden" name="Commentidskm" id="Commentidskm"
+							value="<?php echo $commentskm['Comment_id'];?>">
+						<tr >
+							
+							<td colspan="7" style="text-align: center;"><b>Diagnosis Result<br>
+												(Result comments from Auditor)<b></td>
+							<td colspan="6" style="text-align: center; color: blue;"><b >Kaizen Idea<br>
+												(Recommended actions from the Auditor)</b></td>
+						</tr>
+						<tr >
+							<td colspan="7" class="item2"><textarea rows="7" cols="50" id="diagnosis_result_skm" name="diagnosis_result_skm" style="width: 99%;" ><?php echo stripslashes($commentskm['Diagnosis_Result']); ?></textarea></td>
+							<td colspan="6" class="item2"><textarea rows="7" cols="50" id="kaizen_idea_skm" name="kaizen_idea_skm" style="width: 99%;" ><?php echo stripslashes($commentskm['Kaizen_Idea']); ?></textarea></td>
+						</tr>
+						<!--- for comments form auditor  ------------->
 						
 						<tr class="item1">
 							<td colspan="6"><b>Category Score<b>
@@ -838,7 +878,7 @@ function saveskm()
 
 				</table>
 					<div style="float: right">
-						<button type="button" class="next" onclick="saveskm();">Submit</button>
+						<button type="button" class="next" onclick="validatecomments();">Submit</button>
 					</div>
 				</form>
 

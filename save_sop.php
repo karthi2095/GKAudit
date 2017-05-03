@@ -294,7 +294,7 @@ include "includes/classes/class.datamanage.php";
 						} 
 						
 		
-				/*--------------- SAVE COMMENTS for DNP--------------*/
+				/*--------------- SAVE COMMENTS for SOP--------------*/
 						
 						if(empty($_REQUEST['Commentidsop']) || $_REQUEST['Commentidsop'] == "")
 							{

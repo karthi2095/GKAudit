@@ -354,28 +354,45 @@ include "includes/classes/class.datamanage.php";
 					$result16=mysql_query($InsQuery);
 					$auditId16=$_REQUEST['hiskm53'];
 						} 
+				/*--------------- SAVE COMMENTS for SOP--------------*/
 						
-			/*--------- save Itemscore-----------
-					
-			if(empty($_REQUEST['itemskm']) || $_REQUEST['itemskm'] == "")
-				{
-					$InsQuery= "insert into `tbl_itemscore` (`Category_id`,`Sv_id`,`Itemscore`,
-					 `Month`,`Year`,`Created_on`,`Audit_By`) values
-					 ('63','$svid',
-					 '".$_REQUEST['itemscoreskm']."',
-					 '".$month."',
-					 '".$year."',
-					 now())";
-					$result01=mysql_query($InsQuery);
-					 
-					 $auditId01=mysql_insert_id(); 
-	  }else{
-				
-				$InsQuery= "update `tbl_itemscore` set `Itemscore`='".$_REQUEST['itemscoreskm']."',Last_Update=now() where Id='".$_REQUEST['itemskm']."'";
-			 
-					$result01=mysql_query($InsQuery);
-					$auditId01=mysql_insert_id();
-				} 
+						if(empty($_REQUEST['Commentidskm']) || $_REQUEST['Commentidskm'] == "")
+							{
+								$InsQuery= "insert into `tbl_comments` (`Category_id`,
+															`Sv_id`,
+															`Diagnosis_Result`,
+															`Kaizen_Idea`,
+															 `Month`,`Year`,
+															 `Created_on`,
+															 `Audit_By`
+															) 
+															 values
+														    (
+															 '63',
+															 '$svid',
+															 '".addslashes($_REQUEST['diagnosis_result_skm'])."',
+															 '".addslashes($_REQUEST['kaizen_idea_skm'])."',
+															 '".$month."',
+															 '".$year."',
+															 now(),
+															 '".$sspid."'
+															)
+											 ";
+								$result11=mysql_query($InsQuery);
+								$auditCMTIDskm=mysql_insert_id(); 
+				  }else{
+							
+					 $UpQuery= "update `tbl_comments` 
+										set `Diagnosis_Result`='".addslashes($_REQUEST['diagnosis_result_skm'])."',
+											`Kaizen_Idea`='".addslashes($_REQUEST['kaizen_idea_skm'])."',
+										`Last_Update`=now() 
+										where Comment_id='".$_REQUEST['Commentidskm']."'
+									 ";
+						 
+								$resultu11=mysql_query($UpQuery);
+								$auditCMTIDskm=$_REQUEST['Commentidskm'];
+							} 				
+			
 				
 		/* --------------   Save Category Score   -------    */
 		
@@ -433,7 +450,7 @@ include "includes/classes/class.datamanage.php";
 	
 		if($auditId1 != '' && $auditId2 != '' && $auditId3 != '' && $auditId4 != '' && $auditId5 != '' && $auditId6 != '' 
 		&& $auditId7 != '' && $auditId8 != '' && $auditId9 != '' && $auditId10 != '' && $auditId11 != '' && $auditId12 != '' 
-		&& $auditId13 != '' && $auditId14 != '' && $auditId15 != '' && $auditId16 != '' && $auditIdcr != '' )
+		&& $auditId13 != '' && $auditId14 != '' && $auditId15 != '' && $auditId16 != '' && $auditCMTIDskm != '' && $auditIdcr != '' )
 		{
 			
 			echo '1';

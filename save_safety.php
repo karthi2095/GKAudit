@@ -258,6 +258,7 @@ if($_REQUEST['hdaction1'] == 1)
 		$auditId24=$_REQUEST['hisfy52'];
 	}
 	
+	/* save itemscore*/
 			
 	if(empty($_REQUEST['itemsfyid']) || $_REQUEST['itemsfyid'] == "")
 	{
@@ -297,6 +298,45 @@ if($_REQUEST['hdaction1'] == 1)
 		$auditId01=$_REQUEST['itemsfyid'];
 	}
 	
+		/*--------------- SAVE COMMENTS for safety--------------*/
+						
+						if(empty($_REQUEST['Commentidsfy']) || $_REQUEST['Commentidsfy'] == "")
+							{
+								$InsQuery= "insert into `tbl_comments` (`Category_id`,
+															`Sv_id`,
+															`Diagnosis_Result`,
+															`Kaizen_Idea`,
+															 `Month`,`Year`,
+															 `Created_on`,
+															 `Audit_By`
+															) 
+															 values
+														    (
+															 '103',
+															 '$svid',
+															 '".addslashes($_REQUEST['diagnosis_result_sfy'])."',
+															 '".addslashes($_REQUEST['kaizen_idea_sfy'])."',
+															 '".$month."',
+															 '".$year."',
+															 now(),
+															 '".$sspid."'
+															)
+											 ";
+								$result11=mysql_query($InsQuery);
+								$auditCMTIDsfy=mysql_insert_id(); 
+				  }else{
+							
+					 $UpQuery= "update `tbl_comments` 
+										set `Diagnosis_Result`='".addslashes($_REQUEST['diagnosis_result_sfy'])."',
+											`Kaizen_Idea`='".addslashes($_REQUEST['kaizen_idea_sfy'])."',
+										`Last_Update`=now() 
+										where Comment_id='".$_REQUEST['Commentidsfy']."'
+									 ";
+						 
+								$resultu11=mysql_query($UpQuery);
+								$auditCMTIDsfy=$_REQUEST['Commentidsfy'];
+							} 
+	/* save 5s audit*/
 	if(empty($_REQUEST['his11']) || $_REQUEST['his11'] == "")
 	{
 		$InsQuery= "insert into `saveaudit`(`Sv_id`,`Category_id`,
@@ -448,7 +488,46 @@ if($_REQUEST['hdaction1'] == 1)
 		$auditId02=$_REQUEST['item5sid'];
 	}
 
-	
+	/*--------------- SAVE COMMENTS for 5s--------------*/
+						
+						if(empty($_REQUEST['Commentid5s']) || $_REQUEST['Commentid5s'] == "")
+							{
+								$InsQuery= "insert into `tbl_comments` (`Category_id`,
+															`Sv_id`,
+															`Diagnosis_Result`,
+															`Kaizen_Idea`,
+															 `Month`,`Year`,
+															 `Created_on`,
+															 `Audit_By`
+															) 
+															 values
+														    (
+															 '112',
+															 '$svid',
+															 '".addslashes($_REQUEST['diagnosis_result_5s'])."',
+															 '".addslashes($_REQUEST['kaizen_idea_5s'])."',
+															 '".$month."',
+															 '".$year."',
+															 now(),
+															 '".$sspid."'
+															)
+											 ";
+								$result11=mysql_query($InsQuery);
+								$auditCMTID5s=mysql_insert_id(); 
+				  }else{
+							
+					 $UpQuery= "update `tbl_comments` 
+										set `Diagnosis_Result`='".addslashes($_REQUEST['diagnosis_result_5s'])."',
+											`Kaizen_Idea`='".addslashes($_REQUEST['kaizen_idea_5s'])."',
+										`Last_Update`=now() 
+										where Comment_id='".$_REQUEST['Commentid5s']."'
+									 ";
+						 
+								$resultu11=mysql_query($UpQuery);
+								$auditCMTID5s=$_REQUEST['Commentid5s'];
+							}
+							
+					/* save audit of environment*/
 
 	if(empty($_REQUEST['hise11']) || $_REQUEST['hise11'] == "")
 	{
@@ -598,7 +677,44 @@ if($_REQUEST['hdaction1'] == 1)
 		$resultu11=mysql_query($InsQuery);
 		$auditId03=$_REQUEST['itemenvid'];
 	}
-	
+/*--------------- SAVE COMMENTS for envy--------------*/
+						
+						if(empty($_REQUEST['Commentidenvy']) || $_REQUEST['Commentidenvy'] == "")
+							{
+								$InsQuery= "insert into `tbl_comments` (`Category_id`,
+															`Sv_id`,
+															`Diagnosis_Result`,
+															`Kaizen_Idea`,
+															 `Month`,`Year`,
+															 `Created_on`,
+															 `Audit_By`
+															) 
+															 values
+														    (
+															 '117',
+															 '$svid',
+															 '".addslashes($_REQUEST['diagnosis_result_envy'])."',
+															 '".addslashes($_REQUEST['kaizen_idea_envy'])."',
+															 '".$month."',
+															 '".$year."',
+															 now(),
+															 '".$sspid."'
+															)
+											 ";
+								$result11=mysql_query($InsQuery);
+								$auditCMTIDenvy=mysql_insert_id(); 
+				  }else{
+							
+					 $UpQuery= "update `tbl_comments` 
+										set `Diagnosis_Result`='".addslashes($_REQUEST['diagnosis_result_envy'])."',
+											`Kaizen_Idea`='".addslashes($_REQUEST['kaizen_idea_envy'])."',
+										`Last_Update`=now() 
+										where Comment_id='".$_REQUEST['Commentidenvy']."'
+									 ";
+						 
+								$resultu11=mysql_query($UpQuery);
+								$auditCMTIDenvy=$_REQUEST['Commentidenvy'];
+							}
 	/*--------- save Ergonomic-----------*/
 
 
@@ -750,7 +866,44 @@ if($_REQUEST['hdaction1'] == 1)
 		$auditId04=$_REQUEST['itemegoid'];
 	}
 
-	
+/*--------------- SAVE COMMENTS for envy--------------*/
+						
+						if(empty($_REQUEST['Commentidergo']) || $_REQUEST['Commentidergo'] == "")
+							{
+								$InsQuery= "insert into `tbl_comments` (`Category_id`,
+															`Sv_id`,
+															`Diagnosis_Result`,
+															`Kaizen_Idea`,
+															 `Month`,`Year`,
+															 `Created_on`,
+															 `Audit_By`
+															) 
+															 values
+														    (
+															 '122',
+															 '$svid',
+															 '".addslashes($_REQUEST['diagnosis_result_ergo'])."',
+															 '".addslashes($_REQUEST['kaizen_idea_ergo'])."',
+															 '".$month."',
+															 '".$year."',
+															 now(),
+															 '".$sspid."'
+															)
+											 ";
+								$result11=mysql_query($InsQuery);
+								$auditCMTIDergo=mysql_insert_id(); 
+				  }else{
+							
+					 $UpQuery= "update `tbl_comments` 
+										set `Diagnosis_Result`='".addslashes($_REQUEST['diagnosis_result_ergo'])."',
+											`Kaizen_Idea`='".addslashes($_REQUEST['kaizen_idea_ergo'])."',
+										`Last_Update`=now() 
+										where Comment_id='".$_REQUEST['Commentidergo']."'
+									 ";
+						 
+								$resultu11=mysql_query($UpQuery);
+								$auditCMTIDergo=$_REQUEST['Commentidergo'];
+							}
 	
 	if(empty($_REQUEST['c_id']) || $_REQUEST['c_id'] == "")
 	{
@@ -824,7 +977,7 @@ if($_REQUEST['hdaction1'] == 1)
 	&& $auditId7 != '' && $auditId8 != '' && $auditId9 != '' && $auditId10 != '' && $auditId01 != '' && $auditId02 != ''
 	&& $auditId03 != ''&& $auditId04 != ''&& $auditId12 != ''&& $auditId13 != ''&& $auditId11 != ''&& $auditId14 != ''
 	&& $auditId15 != ''&& $auditId16 != ''&& $auditId17 != ''&& $auditId18 != ''&& $auditId19 != ''&& $auditId20 != '' && $auditId21 != ''&& $auditId22 != ''&& $auditId23 != ''&& $auditId24!= ''
-	&& $auditIdcr != '')
+	&& $auditIdcr != '' && $auditCMTIDsfy != '' && $auditCMTID5s != '' && $auditCMTIDenvy != '' && $auditCMTIDergo != '' )
 	{
 
 		echo '1';
